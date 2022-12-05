@@ -1,0 +1,46 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.rikkeisoft.marketplace;
+option java_package = "com.rikkeisoft.marketplace";
+
+enum Status {
+  FAILED = 0;
+  SUCCESS = 1;
+}
+
+message ItemDetailRequest {
+  int64 itemId = 1;
+}
+
+message ItemInfo {
+  int64 itemId = 1;
+  string itemName = 2;
+  string itemCost = 3;
+  string description = 4;
+}
+
+message UpdateItemOutput {
+  int64 itemId = 2;
+  Status status = 1;
+  string message = 3;
+}
+
+message CartInfo {
+  int64 userId = 1;
+  int64 itemId = 2;
+  int32 quantity = 3;
+  string username = 4;
+}
+
+message UpdateCartInfoOutput {
+  int64 userId = 2;
+  Status status = 1;
+  string message = 3;
+}
+
+service MarketplaceService {
+  rpc updateItemInfo(ItemInfo) returns (UpdateItemOutput);
+  rpc getDetailItem(ItemDetailRequest) returns (ItemInfo);
+  rpc updateInfoCart(CartInfo) returns (UpdateCartInfoOutput);
+
+}

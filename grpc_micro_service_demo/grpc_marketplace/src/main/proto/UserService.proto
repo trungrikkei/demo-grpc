@@ -1,0 +1,32 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.rikkeisoft.user;
+option java_package = "com.rikkeisoft.user";
+
+enum Status {
+  FAILED = 0;
+  SUCCESS = 1;
+}
+
+message UserDetailRequest {
+  int64 userId = 1;
+}
+
+message UserInfo {
+  int64 userId = 1;
+  string username = 2;
+  string name = 3;
+  string email = 4;
+  string phone = 5;
+}
+
+message UpdateUserOutput {
+  int64 userId = 2;
+  Status status = 1;
+  string message = 3;
+}
+
+service UserService {
+  rpc UpdateUserInfo(UserInfo) returns (UpdateUserOutput);
+  rpc getDetailUser(UserDetailRequest) returns (UserInfo);
+}

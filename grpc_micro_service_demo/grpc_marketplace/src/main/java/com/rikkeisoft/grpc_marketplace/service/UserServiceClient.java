@@ -1,24 +1,25 @@
 package com.rikkeisoft.grpc_marketplace.service;
 
 import com.rikkeisoft.user.*;
-import net.devh.springboot.autoconfigure.grpc.client.GrpcClient;
+import io.grpc.stub.StreamObserver;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceClient {
-    @GrpcClient("UserService")
-    private UserServiceGrpc.UserServiceBlockingStub userServiceBlockingStub;
+    @GrpcClient("grpc-devproblems-service")
+    UserServiceGrpc.UserServiceBlockingStub userServiceBlockingStub;
+
+    @GrpcClient("grpc-devproblems-service")
+    UserServiceGrpc.UserServiceStub userServiceStub;
 
     public String getUsername(Long userId) {
         UserDetailRequest request = UserDetailRequest.newBuilder()
                 .setUserId(userId)
                 .build();
-        try {
-            UserInfo userInfo = userServiceBlockingStub.getDetailUser(request);
-            return userInfo.getUsername();
-        } catch (Exception e) {
-            return null;
-        }
+
+        UserInfo userInfo = userServiceBlockingStub.getDetailUser(request);
+        return userInfo.getUsername();
     }
 
     public boolean upDateUser() {

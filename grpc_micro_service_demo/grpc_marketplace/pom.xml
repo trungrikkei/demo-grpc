@@ -77,10 +77,15 @@
 <!--			<version>1.0.0.RELEASE</version>-->
 <!--			<type>pom</type>-->
 <!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.sarang.devproblems</groupId>-->
+<!--			<artifactId>proto</artifactId>-->
+<!--			<version>0.0.1-SNAPSHOT</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>net.devh</groupId>
 			<artifactId>grpc-client-spring-boot-starter</artifactId>
-			<version>1.0.0.RELEASE</version>
+			<version>2.9.0.RELEASE</version>
 		</dependency>
 	</dependencies>
 

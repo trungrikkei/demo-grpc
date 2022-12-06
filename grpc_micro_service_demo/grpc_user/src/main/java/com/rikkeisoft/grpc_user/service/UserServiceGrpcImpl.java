@@ -6,14 +6,14 @@ import com.rikkeisoft.user.*;
 import io.grpc.stub.StreamObserver;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
+import net.devh.boot.grpc.server.service.GrpcService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.logging.Logger;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@GrpcService(UserServiceGrpcImpl.class)
+@GrpcService
 public class UserServiceGrpcImpl extends UserServiceGrpc.UserServiceImplBase {
 
     @Autowired
